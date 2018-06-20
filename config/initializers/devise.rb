@@ -282,7 +282,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
-                  scope: 'userinfo.email, userinfo.profile, drive', name: "google"
+                  scope: 'userinfo.profile, drive', name: "google"
 
   config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'],
                   callback_url: ENV['TWITTER_CALLBACK_URL']
