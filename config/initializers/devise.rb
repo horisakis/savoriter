@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '6ab5c5b03a5a8da102319c2793e7c2039e9cb48d722e6f68871dce7799fba303402544ae67d931dcfa47d2c2734c77fa7bf1fc3f50744daf9b7ee946b76e90a9'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -280,4 +280,11 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+                  scope: 'userinfo.email, userinfo.profile, drive', name: "google"
+
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'],
+                  callback_url: ENV['TWITTER_CALLBACK_URL']
+
 end
