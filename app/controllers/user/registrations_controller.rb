@@ -59,17 +59,4 @@ class User::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
-                  scope: 'userinfo.email, userinfo.profile, drive', name: 'google'
-
-  if Rails.env.development?
-    config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
-                    callback_url: 'http://127.0.0.1:3000/users/auth/twitter/callback'
-
-  else
-    config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
-                    callback_url: 'https://savoriter.herokuapp.com/users/auth/twitter/callback'
-
-  end
 end
