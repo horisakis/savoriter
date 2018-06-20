@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      auth: "認証"
+      content: "コンテンツ"
+      favorite: "お気に入り"
+      user: "ユーザー"
+    attributes:
+      auth:
+        destination: "保存先"
+      user:
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
