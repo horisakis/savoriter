@@ -1,0 +1,3 @@
+check_provider_job:
+  cron: "* * * * *"
+  class: "CheckProviderWorker"

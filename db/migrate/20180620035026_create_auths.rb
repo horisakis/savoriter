@@ -8,7 +8,9 @@ class CreateAuths < ActiveRecord::Migration[5.1]
       t.string :secret_token, null: false
       t.string :expires_at
       t.boolean :destination, null: false, default: false
+      t.bigint :since_id
       t.datetime :save_at
+      t.text :save_path
 
       t.timestamps
     end

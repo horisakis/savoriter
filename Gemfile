@@ -59,4 +59,8 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'rufus-scheduler', '~> 3.4.0'
 gem 'sidekiq-cron'
+gem 'twitter'
+gem 'google_drive'
+

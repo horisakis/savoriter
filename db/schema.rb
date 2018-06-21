@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 20180620040621) do
     t.string "secret_token", null: false
     t.string "expires_at"
     t.boolean "destination", default: false, null: false
+    t.bigint "since_id"
     t.datetime "save_at"
+    t.text "save_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid", "provider"], name: "index_auths_on_uid_and_provider", unique: true
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 20180620040621) do
   end
 
   create_table "contents", force: :cascade do |t|
+    t.string "provider", null: false
+    t.bigint "source_id", null: false
     t.text "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
