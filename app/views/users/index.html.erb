@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<div class="">
+  E-mail:
+
+  <% if @user.email.include?('@example.com') %>
+    未登録
+  <% else %>
+    <%= @user.email %>
+  <% end %>
+</div>
+<%= link_to 'Edit', edit_user_registration_path %> |
+<%= link_to 'パスワード変更', edit_user_password_path %> |

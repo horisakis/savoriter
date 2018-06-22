@@ -15,9 +15,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    # ダミーのemailアドレスとパスワードの変更は
+    # deviseのメソッドのオバーライド等が必要で重たいので現状首絞め
+    redirect_to root_path
+    # super
+  end
 
   # PUT /resource
   # def update
