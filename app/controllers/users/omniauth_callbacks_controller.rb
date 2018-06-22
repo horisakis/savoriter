@@ -35,6 +35,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 
+  def after_sign_in_path_for(resource)
+    auths_path
+  end
+
   private
 
   def common_callback

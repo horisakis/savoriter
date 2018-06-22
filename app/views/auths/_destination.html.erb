@@ -1,0 +1,22 @@
+<% if auth.present? %>
+  <ul>
+    <li>
+        <div class="">
+          保存先:
+          <% if auth.destination %>
+            &#10003;
+          <% else %>
+            &#x2610;
+          <% end %>
+        </div>
+    </li>
+    <li>
+      <div class="">
+        保存先パス: <%= auth.save_path %>
+      </div>
+    </li>
+  </ul>
+  <div class="">
+    <%= link_to '編集する', edit_auth_path(auth.id) %>
+  </div>
+<% end %>

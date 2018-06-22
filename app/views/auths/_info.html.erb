@@ -1,0 +1,12 @@
+<% if auth.present? %>
+  <td>
+    <input type="button" value="連携済み" disabled name="" id="" >
+  </td>
+  <td>
+    <%= link_to '連携を解除する', @auth, method: :delete %>
+  </td>
+<% else %>
+  <td>
+    <%= link_to '連携する', method("user_#{provider}_omniauth_authorize_path").call %>
+  </td>
+<% end %>
