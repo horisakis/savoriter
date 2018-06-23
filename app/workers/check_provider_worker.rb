@@ -61,7 +61,6 @@ class CheckProviderWorker
 
         case media.type
         when 'photo'
-          binding.pry
           media_url = media.media_url.to_s
           content_type = media_url.split('.').pop
 
@@ -71,16 +70,16 @@ class CheckProviderWorker
 
             # m3u8,mp4(bitrate=>256000),mp4(bitrate=>832000),mp4(bitrate=>2176000)
             # の順で入っている。m3u8の扱いはわからない、ひとまず中間のビットレートを取得しておく
-            media_url = media.video_info.variants[2][:url].to_s
-            content_type = media.video_info.variants[2][:content_type].split('/').pop
+            media_url = media.video_info.variants[2].url.to_s
+            content_type = media.video_info.variants[2].content_type.split('/').pop
 
           else
             logger.error("unknown variants length url:#{media.url} info:#{media.video_info}")
           end
         when 'animated_gif'
           if media.video_info.variants.length == 1
-            media_url = media.video_info.variants[0][:url].to_s
-            content_type = media.video_info.variants[0][:content_type].split('/').pop
+            media_url = media.video_info.variants[0].url.to_s
+            content_type = media.video_info.variants[0].content_type.split('/').pop
           else
             logger.error("unknown variants length url:#{media.url} info:#{media.video_info}")
           end
@@ -97,6 +96,7 @@ class CheckProviderWorker
                               url: media_url }
       end
     end
+
     auth.update(since_id: latest_id) if latest_id.present?
     save_media_infos
   end
