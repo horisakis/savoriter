@@ -38,9 +38,11 @@ body > .container {
   text-align: right;
 }
 
-.btn-submit {
-  margin-top: 5px;
-  float: right;
+a.twitter {
+  background-color: #1DA1F2
+}
+a.google {
+  background-color: #DB4437
 }
 
 .clearfix::after {
@@ -52,20 +54,6 @@ body > .container {
 .row-eq-height{
   display: flex;
   flex-wrap: wrap;
-}
-
-  .btn-content {
-  float: right;
-}
-
-.btn-confirm {
-  margin-top: 5px;
-  float: right;
-  display: flex;
-}
-
-.upload_image {
-  max-width: 100%;
 }
 
 // bootstrap上書き

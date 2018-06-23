@@ -6,15 +6,20 @@
     <p class="alert alert-danger" id="notice"><%= alert %></p>
   <% end %>
 
-  <div class="">
-    E-mail:
+  <h1>ユーザー情報</h1>
 
-    <% if @user.email.include?('@example.com') %>
-      未登録
-    <% else %>
-      <%= @user.email %>
-    <% end %>
+  <div class="user">
+    <div class="email">
+      E-mail:
+      <% if @user.email.include?('@example.com') %>
+        未登録
+
+      <% else %>
+        <%= @user.email %>
+      <% end %>
+    </div>
+    <div class="edit">
+      <%= link_to '編集する', edit_user_registration_path, class: 'btn btn-default' %>
+    </div>
   </div>
-  <%= link_to 'Edit', edit_user_registration_path %> |
-  <%= link_to 'パスワード変更', edit_user_password_path %> |
 </div>
