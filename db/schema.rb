@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180620040621) do
     t.string "provider", null: false
     t.bigint "source_id", null: false
     t.text "url", null: false
+    t.text "oembed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

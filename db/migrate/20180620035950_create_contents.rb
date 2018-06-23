@@ -4,6 +4,7 @@ class CreateContents < ActiveRecord::Migration[5.1]
       t.string :provider,   null: false
       t.bigint :source_id, null: false
       t.text :url,          null: false
+      t.text :oembed
 
       t.timestamps
     end
