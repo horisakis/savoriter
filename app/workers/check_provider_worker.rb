@@ -12,7 +12,7 @@ class CheckProviderWorker
       media_auths.each do |media_auth|
         case media_auth.provider
         when 'twitter'
-          save_media_infos += check_twitter(user, media_auth)
+          save_media_infos += check_twitter(user, media_auth).reverse
         end
       end
 
@@ -32,6 +32,7 @@ class CheckProviderWorker
     end
 
     save_media_infos = []
+    save_contents = []
     latest_id = nil
     since_id = { since_id: auth.since_id } if auth.since_id.present?
     favorite_source_ids = user.favorite_contents.map(&:source_id)
@@ -48,11 +49,6 @@ class CheckProviderWorker
       latest_id ||= favorite.id
       next if favorite.media.blank?
       break if favorite_source_ids.include?(favorite.id)
-
-      content = Content.find_or_create_by(provider: 'twitter',
-                                          source_id: favorite.id,
-                                          url: favorite.url.to_s)
-      Favorite.create(user_id: auth.user_id, content_id: content.id)
 
       length = favorite.media.length
 
@@ -95,9 +91,22 @@ class CheckProviderWorker
                               content_type: content_type,
                               url: media_url }
       end
+
+      save_contents << { id: favorite.id,
+                         url: favorite.url.to_s,
+                         oembed:   client.oembed(favorite).html }
+    end
+
+    save_contents.reverse.each do |save_content|
+      content = Content.find_or_create_by(provider: 'twitter',
+                                          source_id: save_content[:id],
+                                          url: save_content[:url],
+                                          oembed: save_content[:oembed])
+      Favorite.create(user_id: auth.user_id, content_id: content.id)
     end
 
     auth.update(since_id: latest_id) if latest_id.present?
+
     save_media_infos
   end
 
