@@ -1,6 +1,15 @@
-<% @contents.each do |content| %>
-  <% case content.provider
-     when 'twitter' %>
-       <%= raw content.oembed %>
+<div class="container">
+  <% if notice %>
+    <p class="alert alert-success" id="notice"><%= notice %></p>
   <% end %>
-<% end %>
+  <% if alert %>
+    <p class="alert alert-danger" id="notice"><%= alert %></p>
+  <% end %>
+
+  <% @contents.each do |content| %>
+   <% case content.provider
+      when 'twitter' %>
+        <%= raw content.oembed %>
+   <% end %>
+  <% end %>
+</div>

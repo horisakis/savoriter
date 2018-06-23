@@ -1,12 +1,20 @@
-<p id="notice"><%= notice %></p>
-<div class="">
-  E-mail:
-
-  <% if @user.email.include?('@example.com') %>
-    未登録
-  <% else %>
-    <%= @user.email %>
+<div class="container">
+  <% if notice %>
+    <p class="alert alert-success" id="notice"><%= notice %></p>
   <% end %>
+  <% if alert %>
+    <p class="alert alert-danger" id="notice"><%= alert %></p>
+  <% end %>
+
+  <div class="">
+    E-mail:
+
+    <% if @user.email.include?('@example.com') %>
+      未登録
+    <% else %>
+      <%= @user.email %>
+    <% end %>
+  </div>
+  <%= link_to 'Edit', edit_user_registration_path %> |
+  <%= link_to 'パスワード変更', edit_user_password_path %> |
 </div>
-<%= link_to 'Edit', edit_user_registration_path %> |
-<%= link_to 'パスワード変更', edit_user_password_path %> |

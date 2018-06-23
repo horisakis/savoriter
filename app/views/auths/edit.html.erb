@@ -1,5 +1,14 @@
-<h1>Editing Auth</h1>
+<div class="container">
+  <% if notice %>
+    <p class="alert alert-success" id="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger" id="notice"><%= alert %></p>
+  <% end %>
 
-<%= render 'form', auth: @auth %>
+  <h1>Editing Auth</h1>
 
-<%= link_to 'Back', auths_path %>
+  <%= render 'form', auth: @auth %>
+
+  <%= link_to 'Back', auths_path %>
+</div>
