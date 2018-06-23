@@ -35,13 +35,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super(scope)
   # end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     auths_path
   end
 
   private
 
   def common_callback
+    result = { type: :alert, value: :failure }
     auth_info = request.env['omniauth.auth']
     auth = Auth.find_by_omniauth(auth_info)
 
@@ -49,6 +50,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if auth.present?
         # @user = User.find(@auth.user_id)
         @user = auth.user
+        result = { type: :notice, value: :success }
       else
         if user_signed_in?
           @user = current_user
@@ -60,10 +62,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
 
         auth = Auth.create_from_omniauth(@user.id, auth_info)
+        result = { type: :notice, value: :success }
       end
     end
+    set_flash_message(result[:type], result[:value], kind: auth.provider, reason: :DB登録エラー) if is_navigational_format?
 
-    sign_in_and_redirect @user, event: :authentication
-    set_flash_message(:notice, :success, kind: auth.provider) if is_navigational_format?
+    if result[:value] == :success
+      sign_in_and_redirect @user, event: :authentication
+    elsif signed_in?
+      redirect_to auths_path
+    else
+      redirect_to unauthenticated_root_path
+    end
   end
 end
