@@ -1,0 +1,6 @@
+<% @contents.each do |content| %>
+  <% case content.provider
+     when 'twitter' %>
+       <%= raw content.oembed %>
+  <% end %>
+<% end %>
