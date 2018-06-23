@@ -30,7 +30,7 @@ class AuthsController < ApplicationController
   def destroy
     @auth.destroy
     respond_to do |format|
-      format.html { redirect_to auths_url, notice: 'Auth was successfully destroyed.' }
+      format.html { redirect_to auths_path, notice: 'Auth was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -39,7 +39,7 @@ class AuthsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_auth
-    @auth = Auth.find_by(user_id: current_user.id)
+    @auth = Auth.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
