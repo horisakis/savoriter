@@ -9,6 +9,15 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'contents#index', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => 'static_pages#index', as: :unauthenticated_root
+    end
+  end
+
   resources :users, only: :index
   resources :auths, only: %i[index edit update destroy]
 end
