@@ -15,10 +15,11 @@
     <%= form.label '保存する' %>
     <%= form.check_box :destination, id: :destination %>
     <%= form.label '保存パス' %>
-    <%= form.text_field :save_path, id: :save_path, placeholder: auth.save_path %>
+    <%= form.text_field :save_path, id: :save_path, size: '40',
+                        placeholder: auth.save_path %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '更新', class: 'btn btn-default' %>
   </div>
 <% end %>

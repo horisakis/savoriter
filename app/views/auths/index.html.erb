@@ -6,7 +6,7 @@
     <p class="alert alert-danger" id="notice"><%= alert %></p>
   <% end %>
 
-  <h1>Auths</h1>
+  <h1>外部連携情報</h1>
 
   <% #controllerでやったほうがいいか？ %>
   <% auths = @auths.map{ |auth|
@@ -15,28 +15,41 @@
     when 'google'; [:google, auth]
     end
   }.to_h %>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr>
-        <td><%= 'twitter' %></td>
-        <%= render 'auths/info', auth: auths[:twitter], provider: 'twitter'%>
-      </tr>
-      <tr>
-        <td><%= 'google' %></td>
-        <%= render 'auths/info', auth: auths[:google], provider: 'google'%>
-      </tr>
-      <tr>
-        <td>
-          <%= render 'auths/destination', auth: auths[:google], provider: 'google'%>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <%= link_to 'Back', users_path %>
+  <div class="row">
+    <div class="auth twitter-auth">
+      <div class="label label-default">
+        twitter
+      </div>
+      <div class="auth-body">
+        <ul>
+          <li>
+          </li>
+          <li>
+            <%= render 'auths/info', auth: auths[:twitter], provider: 'twitter'%>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="auth google-auth">
+      <div class="label label-default">
+        google
+      </div>
+      <div class="auth-body">
+        <ul>
+          <li>
+            <%= render 'auths/destination', auth: auths[:google], provider: 'google'%>
+          </li>
+          <li>
+            <%= render 'auths/info', auth: auths[:google], provider: 'google'%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <%= link_to 'Back', users_path %>
+  </div>
 </div>

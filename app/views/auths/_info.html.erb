@@ -1,12 +1,11 @@
-<% if auth.present? %>
-  <td>
-    <input type="button" value="連携済み" disabled name="" id="" >
-  </td>
-  <td>
-    <%= link_to '連携を解除する', @auth, method: :delete %>
-  </td>
-<% else %>
-  <td>
-    <%= link_to '連携する', method("user_#{provider}_omniauth_authorize_path").call %>
-  </td>
-<% end %>
+<div class="auth-cooperation">
+  <% if auth.present? %>
+      <span class='btn btn-primary disabled'>連携済み</span>
+      <%= link_to '連携を解除する', auth, method: :delete,
+                                  class: 'btn btn-danger',
+                                  data: {confirm: "本当に解除してもいいですか？"} %>
+  <% else %>
+      <%= link_to '連携する', method("user_#{provider}_omniauth_authorize_path").call,
+                            class: 'btn btn-primary' %>
+  <% end %>
+</div>
