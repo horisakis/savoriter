@@ -23,9 +23,9 @@
       </div>
       <div class="auth-body">
         <ul>
-          <li>
+          <li class='col-md-6'>
           </li>
-          <li>
+          <li class='col-md-3'>
             <%= render 'auths/info', auth: auths[:twitter], provider: 'twitter'%>
           </li>
         </ul>
@@ -38,10 +38,10 @@
       </div>
       <div class="auth-body">
         <ul>
-          <li>
+          <li class='col-md-6'>
             <%= render 'auths/destination', auth: auths[:google], provider: 'google'%>
           </li>
-          <li>
+          <li class='col-md-3'>
             <%= render 'auths/info', auth: auths[:google], provider: 'google'%>
           </li>
         </ul>
