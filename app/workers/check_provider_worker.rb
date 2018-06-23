@@ -16,7 +16,7 @@ class CheckProviderWorker
         end
       end
 
-      case strage_auth.provider
+      case strage_auth.try(:provider)
       when 'google'
         save_google(strage_auth, save_media_infos)
       end
