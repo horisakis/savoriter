@@ -23,6 +23,9 @@
           </a>
         </div>
         <div id="gnavi" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "一覧", contents_path %></li>
+          </ul>
           <ul class="nav navbar-nav nav-session">
             <% if signed_in? %>
               <li><%= link_to "Profile", auths_path %></li>
