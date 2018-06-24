@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '6ab5c5b03a5a8da102319c2793e7c2039e9cb48d722e6f68871dce7799fba303402544ae67d931dcfa47d2c2734c77fa7bf1fc3f50744daf9b7ee946b76e90a9'
+  config.secret_key = '6ab5c5b03a5a8da102319c2793e7c2039e9cb48d722e6f68871dce7799fba303402544ae67d931dcfa47d2c2734c77fa7bf1fc3f50744daf9b7ee946b76e90a9'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -284,7 +284,6 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
                   scope: 'userinfo.profile, drive', name: "google"
 
-  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'],
-                  callback_url: ENV['TWITTER_CALLBACK_URL']
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
 
 end
