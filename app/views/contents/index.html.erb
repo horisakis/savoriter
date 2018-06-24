@@ -8,7 +8,7 @@
 
   <div class="row row-eq-height">
     <% @contents.each do |content| %>
-      <div class="col-md-6">
+      <div class="col-md-4 col-sm-6">
         <% case content.provider
            when 'twitter' %>
              <%= raw content.oembed %>
