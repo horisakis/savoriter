@@ -16,7 +16,7 @@ class AuthsController < ApplicationController
   def update
     respond_to do |format|
       if @auth.update(auth_params)
-        format.html { redirect_to auths_path, notice: 'Auth was successfully updated.' }
+        format.html { redirect_to auths_path, notice: '連携情報を更新しました。' }
         format.json { render :index, status: :ok, location: @auth }
       else
         format.html { render :edit }
@@ -30,7 +30,7 @@ class AuthsController < ApplicationController
   def destroy
     @auth.destroy
     respond_to do |format|
-      format.html { redirect_to auths_path, notice: 'Auth was successfully destroyed.' }
+      format.html { redirect_to auths_path, notice: '連携情報を削除しました。' }
       format.json { head :no_content }
     end
   end
