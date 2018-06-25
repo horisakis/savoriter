@@ -35,7 +35,12 @@ class Favorite < ApplicationRecord
     since_id = { since_id: auth.since_id } if auth.since_id.present?
     favorite_source_ids = user.favorite_contents.map(&:source_id)
 
-    favorites = client.favorites(since_id)
+    begin
+      favorites = client.favorites(since_id)
+    rescue Twitter::Error::TooManyRequests => e
+      logger.warn("#{e.class} #{e.message} user:#{user.id}")
+      return save_media_infos
+    end
 
     if auth.since_id.nil?
       # 初回起動時は最新IDを記録して次回から保存
