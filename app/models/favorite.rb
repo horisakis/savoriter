@@ -44,7 +44,7 @@ class Favorite < ApplicationRecord
 
     if auth.since_id.nil?
       # 初回起動時は最新IDを記録して次回から保存
-      auth.update(since_id: favorites[0].id)
+      auth.update(since_id: favorites[0].id) if favorites.present?
       return save_media_infos
     end
 
