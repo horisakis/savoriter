@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -50,6 +51,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
+  gem 'spring-commands-rspec'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,4 +65,3 @@ gem 'rufus-scheduler', '~> 3.4.0'
 gem 'sidekiq-cron'
 gem 'twitter'
 gem 'google_drive'
-
