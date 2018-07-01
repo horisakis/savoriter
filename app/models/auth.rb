@@ -1,5 +1,13 @@
 class Auth < ApplicationRecord
+  validates :user_id,      presence: true
+  validates :uid,          presence: true
+  validates :provider,     presence: true
+  validates :token,        presence: true
+  validates :secret_token, presence: true
+  validates :destination,  inclusion: { in: [true, false] }
+
   belongs_to :user
+
   def self.find_by_omniauth(auth)
     find_by(provider: auth[:provider], uid: auth[:uid])
   end
