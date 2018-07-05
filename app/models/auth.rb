@@ -29,7 +29,9 @@ class Auth < ApplicationRecord
              uid: auth[:uid],
              token: auth[:credentials][:token],
              secret_token: auth[:credentials][:secret])
-
+    else
+      logger.error("Unknown providr:#{auth[:provider]} user_id:#{user_id}")
+      nil
     end
   end
 
