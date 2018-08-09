@@ -12,11 +12,10 @@ class Favorite < ApplicationRecord
     # TODO: DBアクセス１回にして取得後に振り分けしたほうがよさそう
     media_auths = Auth.where_medias user.id
     strage_auth = Auth.find_strage user.id
-    save_media_infos = []
 
-    media_auths.each do |media_auth|
-      save_media_infos += method("check_#{media_auth.provider}").call(user, media_auth).reverse
-    end
+    save_media_infos = media_auths.map do |media_auth|
+      method("check_#{media_auth.provider}").call(user, media_auth).reverse
+    end.flatten
 
     method("save_#{strage_auth.provider}").call(strage_auth, save_media_infos) if strage_auth.present?
   end
