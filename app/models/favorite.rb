@@ -53,6 +53,13 @@ class Favorite < ApplicationRecord
       next if favorite.media.blank?
       break if favorite_source_ids.include?(favorite.id)
 
+      begin
+        oembed_html = client.oembed(favorite).html
+      rescue Twitter::Error::Forbidden => e
+        logger.error("#{e.class} #{e.message} user:#{user.id} tweet_id:#{favorite.id}")
+        next
+      end
+
       length = favorite.media.length
 
       favorite.media.each_with_index do |media, idx|
@@ -97,7 +104,7 @@ class Favorite < ApplicationRecord
 
       save_contents << { id: favorite.id,
                          url: favorite.url.to_s,
-                         oembed:   client.oembed(favorite).html }
+                         oembed: oembed_html }
     end
 
     save_contents.reverse.each do |save_content|
