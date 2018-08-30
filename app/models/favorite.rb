@@ -12,11 +12,10 @@ class Favorite < ApplicationRecord
     # TODO: DBアクセス１回にして取得後に振り分けしたほうがよさそう
     media_auths = Auth.where_medias user.id
     strage_auth = Auth.find_strage user.id
-    save_media_infos = []
 
-    media_auths.each do |media_auth|
-      save_media_infos += method("check_#{media_auth.provider}").call(user, media_auth).reverse
-    end
+    save_media_infos = media_auths.map do |media_auth|
+      method("check_#{media_auth.provider}").call(user, media_auth).reverse
+    end.flatten
 
     method("save_#{strage_auth.provider}").call(strage_auth, save_media_infos) if strage_auth.present?
   end
@@ -52,6 +51,13 @@ class Favorite < ApplicationRecord
       latest_id ||= favorite.id
       next if favorite.media.blank?
       break if favorite_source_ids.include?(favorite.id)
+
+      begin
+        oembed_html = client.oembed(favorite).html
+      rescue Twitter::Error::Forbidden => e
+        logger.error("#{e.class} #{e.message} user:#{user.id} tweet_id:#{favorite.id}")
+        next
+      end
 
       length = favorite.media.length
 
@@ -97,7 +103,7 @@ class Favorite < ApplicationRecord
 
       save_contents << { id: favorite.id,
                          url: favorite.url.to_s,
-                         oembed:   client.oembed(favorite).html }
+                         oembed: oembed_html }
     end
 
     save_contents.reverse.each do |save_content|
