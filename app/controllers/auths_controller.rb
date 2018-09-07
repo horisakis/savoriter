@@ -2,17 +2,12 @@ class AuthsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_auth, only: %i[edit update destroy]
 
-  # GET /auths
-  # GET /auths.json
   def index
     @auths = Auth.where(user_id: current_user.id)
   end
 
-  # GET /auths/1/edit
   def edit; end
 
-  # PATCH/PUT /auths/1
-  # PATCH/PUT /auths/1.json
   def update
     respond_to do |format|
       if @auth.update(auth_params)
@@ -25,8 +20,6 @@ class AuthsController < ApplicationController
     end
   end
 
-  # DELETE /auths/1
-  # DELETE /auths/1.json
   def destroy
     @auth.destroy
     respond_to do |format|
@@ -37,12 +30,10 @@ class AuthsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_auth
     @auth = Auth.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def auth_params
     params.require(:auth).permit(:destination, :save_path)
   end
