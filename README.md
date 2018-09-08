@@ -1,10 +1,14 @@
-# README
+# Savoriter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![default](https://user-images.githubusercontent.com/36940346/45250497-2a773f80-b36f-11e8-80b3-1b3c83fe1a31.png)
 
-Things you may want to cover:
+## 概要
+いいねしたメディア付きツイートの閲覧や、メディアのGoogleDriveへの自動保存が行えるサービス
 
+## 開発経緯
+https://speakerdeck.com/horisakis/savoriter
+
+## 環境
 * Ruby version
   - 2.4.0
 
@@ -57,5 +61,3 @@ config.action_mailer.default_url_options をherokuアプリのURLへ変更する
    - git push heroku master
    - heroku ps:scale worker=1
 
-
-* ...
