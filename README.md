@@ -50,6 +50,7 @@ config.action_mailer.default_url_options をherokuアプリのURLへ変更する
 
 
 * How to run the test suite
+   - bundle exec rspec
 
 * Services (job queues, cache servers, search engines, etc.)
    - ローカル環境(Mac)
@@ -60,4 +61,3 @@ config.action_mailer.default_url_options をherokuアプリのURLへ変更する
 * Deployment instructions
    - git push heroku master
    - heroku ps:scale worker=1
-
