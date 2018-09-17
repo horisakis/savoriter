@@ -5,7 +5,7 @@
 ## 概要
 いいねしたメディア付きツイートの閲覧や、メディアのGoogleDriveへの自動保存が行えるサービス
 
-## 開発経緯
+## 開発経緯、構成等
 https://speakerdeck.com/horisakis/savoriter
 
 ## 環境
