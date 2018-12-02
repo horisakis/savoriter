@@ -32,7 +32,6 @@ class Favorite < ApplicationRecord
     save_contents = []
     latest_id = nil
     since_id = { since_id: auth.since_id } if auth.since_id.present?
-    favorite_source_ids = user.favorite_contents.map(&:source_id)
 
     begin
       favorites = client.favorites(since_id)
@@ -46,6 +45,10 @@ class Favorite < ApplicationRecord
       auth.update(since_id: favorites[0].id) if favorites.present?
       return save_media_infos
     end
+
+    return save_media_infos if favorites.blank?
+
+    favorite_source_ids = user.favorite_contents.where(source_id: favorites.last.id..Float::INFINITY).map(&:source_id)
 
     favorites.each do |favorite|
       latest_id ||= favorite.id
