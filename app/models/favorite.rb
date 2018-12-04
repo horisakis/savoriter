@@ -48,7 +48,7 @@ class Favorite < ApplicationRecord
 
     return save_media_infos if favorites.blank?
 
-    favorite_source_ids = user.favorite_contents.where(source_id: favorites.last.id..Float::INFINITY).map(&:source_id)
+    favorite_source_ids = user.favorite_contents.provider(auth.provider).newer_by_source_id(favorites.last.id).map(&:source_id)
 
     favorites.each do |favorite|
       latest_id ||= favorite.id
