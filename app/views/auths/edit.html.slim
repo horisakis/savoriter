@@ -1,0 +1,13 @@
+.container
+  - if notice
+    p#notice.alert.alert-success
+      = notice
+  - if alert
+    p#notice.alert.alert-danger
+      = alert
+  h1
+    = @auth.provider
+    | 情報 編集
+  = render 'form', auth: @auth
+  .back-link
+    = link_to 'Back', auths_path

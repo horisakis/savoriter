@@ -1,0 +1,17 @@
+.destination
+  - if auth.present?
+    ul
+      li
+        .destination
+          |  保存先: 
+          - if auth.destination
+            |  ✓ 
+          - else
+            |  ☐ 
+      li
+        .save_path
+          |  保存先パス: 
+          = auth.save_path
+    ul.auth-edit
+      li
+        = link_to '編集する', edit_auth_path(auth.id), class: 'btn btn-default'
