@@ -1,0 +1,18 @@
+.container
+  - if notice
+    p#notice.alert.alert-success
+      = notice
+  - if alert
+    p#notice.alert.alert-danger
+      = alert
+  h1
+    | ユーザー情報
+  .user
+    .email
+      |  E-mail: 
+      - if @user.email.include?('@example.com')
+        |  未登録 
+      - else
+        = @user.email
+    .edit
+      = link_to '編集する', edit_user_registration_path, class: 'btn btn-default'

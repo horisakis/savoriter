@@ -1,0 +1,37 @@
+.container
+  - if notice
+    p#notice.alert.alert-success
+      = notice
+  - if alert
+    p#notice.alert.alert-danger
+      = alert
+  h1
+    | 外部連携情報
+  - #controllerでやったほうがいいか？
+  - auths = @auths.map{ |auth|
+  -     case auth.provider
+  -     when 'twitter'; [:twitter, auth]
+  -     when 'google'; [:google, auth]
+  -     end
+  -   }.to_h
+  .row
+    .auth.twitter-auth
+      .label.label-default
+        |  twitter 
+      .auth-body
+        ul
+          li.col-md-6
+
+          li.col-md-3
+            = render 'auths/info', auth: auths[:twitter], provider: 'twitter'
+    .auth.google-auth
+      .label.label-default
+        |  google 
+      .auth-body
+        ul
+          li.col-md-6
+            = render 'auths/destination', auth: auths[:google], provider: 'google'
+          li.col-md-3
+            = render 'auths/info', auth: auths[:google], provider: 'google'
+  .back-link
+    - #= link_to 'Back', users_path

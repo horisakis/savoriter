@@ -1,0 +1,13 @@
+.container
+  - if notice
+    p#notice.alert.alert-success
+      = notice
+  - if alert
+    p#notice.alert.alert-danger
+      = alert
+  .row.row-eq-height
+    - @contents.each do |content|
+      .col-md-4.col-sm-6
+        - case content.provider
+        -            when 'twitter'
+        = raw content.oembed

@@ -1,0 +1,36 @@
+.container
+  - if notice
+    p#notice.alert.alert-success
+      = notice
+  - if alert
+    p#notice.alert.alert-danger
+      = alert
+  h1
+    | Savoriter
+  .about
+    p
+      | SavoriterはTwitterでいいねした画像等を自動的にGoogleDriveに保存するサービスです。
+    p
+      | 人気のtweetを一覧から見ることもできます。
+  .howto
+    h4
+      | 使い方
+    ul
+      li
+        | Sign upからユーザー登録(Twitter連携、Google連携も可能です)
+      li
+        | ProfileからTwitter,Google連携
+      li
+        | 保存先の「編集する」ボタンから編集ページへ移動し、保存するにチェックして更新
+    p
+      | 以上でお気に入りした画像等が自動的に保存されます。
+  .info
+    h4
+      | 注意事項
+    ul
+      li
+        | いいねのチェックは15分周期で行います。
+      li
+        | 初回のチェック以降にいいねした画像等が保存されます。
+      li
+        | 保存先を指定していない間にチェックした画像は保存されません。
