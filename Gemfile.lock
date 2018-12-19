@@ -141,7 +141,7 @@ GEM
     logging (2.2.2)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -199,7 +199,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.2)
     puma (3.11.4)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-protection (2.0.3)
       rack
     rack-test (1.0.0)
