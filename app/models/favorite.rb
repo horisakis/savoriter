@@ -55,13 +55,6 @@ class Favorite < ApplicationRecord
       next if favorite.media.blank?
       break if favorite_source_ids.include?(favorite.id)
 
-      begin
-        oembed_html = client.oembed(favorite).html
-      rescue Twitter::Error::Forbidden => e
-        logger.error("#{e.class} #{e.message} user:#{user.id} tweet_id:#{favorite.id}")
-        next
-      end
-
       length = favorite.media.length
 
       favorite.media.each_with_index do |media, idx|
@@ -105,15 +98,13 @@ class Favorite < ApplicationRecord
       end
 
       save_contents << { id: favorite.id,
-                         url: favorite.url.to_s,
-                         oembed: oembed_html }
+                         url: favorite.url.to_s }
     end
 
-    save_contents.reverse.each do |save_content|
+    save_contents.reverse_each do |save_content|
       content = Content.find_or_create_by(provider: 'twitter',
                                           source_id: save_content[:id],
-                                          url: save_content[:url],
-                                          oembed: save_content[:oembed])
+                                          url: save_content[:url])
       Favorite.create(user_id: auth.user_id, content_id: content.id)
     end
 
@@ -124,6 +115,7 @@ class Favorite < ApplicationRecord
 
   def self.save_google(auth, save_media_infos)
     return if save_media_infos.blank?
+
     credentials = Google::Auth::UserRefreshCredentials.new(
       client_id: ENV['GOOGLE_CLIENT_ID'],
       client_secret: ENV['GOOGLE_CLIENT_SECRET'],
