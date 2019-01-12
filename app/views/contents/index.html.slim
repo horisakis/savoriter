@@ -7,10 +7,10 @@
       = alert
   .row.row-eq-height
     - @contents.each do |content|
-      div class="col-md-4 col-sm-6"
+      div class="col-md-4 col-sm-6 #{content.provider}-#{content.source_id}"
         - case content.provider
         - when 'twitter'
           blockquote.twitter-tweet data-conversation="none"
-            a href=content.url
+            a class="#{content.provider}-#{content.source_id}" href=content.url
 
 script {async src="//platform.twitter.com/widgets.js" charset="utf-8"}
