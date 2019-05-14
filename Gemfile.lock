@@ -60,7 +60,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
@@ -119,11 +119,10 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
-    i18n (1.0.1)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.7.0)
+    jbuilder (2.9.0)
       activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     jwt (1.5.6)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -354,7 +353,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   google_drive
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.9)
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2
