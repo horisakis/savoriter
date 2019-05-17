@@ -261,8 +261,8 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
-    rufus-scheduler (3.4.2)
-      et-orbi (~> 1.0)
+    rufus-scheduler (3.6.0)
+      fugit (~> 1.1, >= 1.1.6)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -366,7 +366,7 @@ DEPENDENCIES
   puma (~> 3.12)
   rails (~> 5.1.6)
   rspec-rails
-  rufus-scheduler (~> 3.4.0)
+  rufus-scheduler (~> 3.6.0)
   sassc-rails
   sidekiq-cron
   slim-rails
