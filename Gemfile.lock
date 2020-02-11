@@ -141,8 +141,8 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
     jwt (2.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -370,7 +370,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   google_drive
-  jbuilder (~> 2.9)
+  jbuilder (~> 2.10)
   letter_opener_web
   listen (>= 3.0.5, < 3.3)
   omniauth-google-oauth2
