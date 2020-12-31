@@ -107,9 +107,9 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    fugit (1.3.4)
+    fugit (1.4.1)
       et-orbi (~> 1.1, >= 1.1.8)
-      raabro (~> 1.1)
+      raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.46.0)
@@ -220,7 +220,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.0.2)
       nio4r (~> 2.0)
-    raabro (1.1.6)
+    raabro (1.4.0)
     rack (2.2.3)
     rack-protection (2.0.8.1)
       rack
@@ -283,7 +283,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
-    rufus-scheduler (3.6.0)
+    rufus-scheduler (3.7.0)
       fugit (~> 1.1, >= 1.1.6)
     sassc (2.0.1)
       ffi (~> 1.9)
@@ -346,7 +346,7 @@ GEM
       multipart-post (~> 2.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.2.0)
@@ -388,7 +388,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 6.0.3)
   rspec-rails
-  rufus-scheduler (~> 3.6.0)
+  rufus-scheduler (~> 3.7.0)
   sassc-rails
   sidekiq-cron
   slim-rails
