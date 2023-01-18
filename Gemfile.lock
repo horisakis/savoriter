@@ -172,7 +172,9 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -221,7 +223,7 @@ GEM
     puma (5.0.2)
       nio4r (~> 2.0)
     raabro (1.1.6)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
